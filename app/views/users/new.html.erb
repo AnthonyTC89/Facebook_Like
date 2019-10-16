@@ -1,0 +1,6 @@
+<h2> Please create your account</h2><br/> <br/><%= form_for :@user do |f| %>
+ <%= f.label :name %>
+ <%= f.text_field :name %><br/><br/> <%= f.label :email %>
+ <%= f.text_field :email %><br/><br/> <%= f.label :password %>
+ <%= f.text_field :password %><br/><br/> <%= f.submit value="Signup"%>
+<% end %><br/> <br/><h2><a href='/auth/facebook'>Login with Facebook</a></h2>

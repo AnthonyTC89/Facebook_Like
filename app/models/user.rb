@@ -16,6 +16,7 @@ class User < ApplicationRecord
       # user.skip_confirmation!
     end
   end
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
@@ -23,4 +24,11 @@ class User < ApplicationRecord
       end
     end
   end
+
+  def self.find_or_create_by_omniauth(auth_hash)
+    self.where(email: auth_hash['info']['email']).first_or_create do |u|
+    u.name = auth_hash['info']['name']
+    u.password = SecureRandom.hex
+    end
+   end
 end
