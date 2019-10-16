@@ -15,7 +15,8 @@ Devise.setup do |config|
   # config.parent_controller = 'DeviseController'
 
   # ==> omniauth configuration
-  # config.omniauth :facebook, "1394375117405797", "3151680bb3260f5878ec1b3a3dafc6cd", token_params: { parse: :json }
+  config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], token_params: { parse: :json }
+      #,{ strategy_class: OmniAuth::Strategies::Facebook, provider_ignores_state: true, } 
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
