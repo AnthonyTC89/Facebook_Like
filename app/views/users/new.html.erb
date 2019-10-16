@@ -3,4 +3,6 @@
  <%= f.text_field :name %><br/><br/> <%= f.label :email %>
  <%= f.text_field :email %><br/><br/> <%= f.label :password %>
  <%= f.text_field :password %><br/><br/> <%= f.submit value="Signup"%>
-<% end %><br/> <br/><h2><a href='/auth/facebook'>Login with Facebook</a></h2>
+<% end %><br/> <br/><h2>
+<%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+</h2>
