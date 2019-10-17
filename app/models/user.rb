@@ -14,8 +14,6 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      p auth.info.image
-      p auth.info.image.class
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.first_name = auth.info.name   
@@ -33,8 +31,8 @@ class User < ApplicationRecord
 
   def self.find_or_create_by_omniauth(auth_hash)
     self.where(email: auth_hash['info']['email']).first_or_create do |u|
-    u.name = auth_hash['info']['name']
-    u.password = SecureRandom.hex
+      u.name = auth_hash['info']['name']
+      u.password = SecureRandom.hex
     end
    end
 end
