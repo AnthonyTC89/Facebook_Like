@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     @user = User.new
    end
    
-   def create
+  def create
     # user = User.new(params_user)
     # if user.valid?
     #   user.save
@@ -12,7 +12,11 @@ class UsersController < ApplicationController
     # else
     #   render 'new'
     # end
-   end
+  end
+
+  def show 
+
+  end
 
   #  private 
 

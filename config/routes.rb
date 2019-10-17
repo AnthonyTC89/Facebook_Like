@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
     get  'signup' => 'devise/registrations#new'
     post 'signup' => 'devise/registrations#create'
+
+    get '/signout', to: 'devise/sessions#destroy', as: :signout
   end
 
   # get    '/auth/facebook/callback' => 'sessions#create'
@@ -18,7 +20,7 @@ Rails.application.routes.draw do
   # post   '/login'  => 'sessions#create'
   # delete '/logout' => 'sessions#destroy'
 
-  #root 'users#new'
-  # resources :users,    only: [:new, :create, :show]
+  # root '/users/show'
+  resources :users,    only: :show
   # resources :sessions, only: [:new, :create, :destroy]
 end
