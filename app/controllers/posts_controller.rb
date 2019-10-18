@@ -1,12 +1,13 @@
-class PostsController < ApplicationController
-  def new 
-  end
+# frozen_string_literal: true
 
-  def create 
+class PostsController < ApplicationController
+  def new; end
+
+  def create
     @post = current_user.posts.build(post_params)
-    if @post.valid? 
+    if @post.valid?
       @post.save
-      flash[:success] = "Post created"
+      flash[:success] = 'Post created'
       redirect_to current_user
     else
       flash[:danger] = "Post can't be empty"
@@ -14,15 +15,15 @@ class PostsController < ApplicationController
     end
   end
 
-  def destroy 
+  def destroy
     Post.find(params[:id]).destroy
-    flash[:success] = "Post deleted"
+    flash[:success] = 'Post deleted'
     redirect_to current_user
   end
 
-  private 
+  private
 
-    def post_params 
-      params.require(:post).permit(:content)
-    end
+  def post_params
+    params.require(:post).permit(:content)
+  end
 end
