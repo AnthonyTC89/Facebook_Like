@@ -10,14 +10,14 @@ class PostsController < ApplicationController
     else
       render current_user
     end
-    p @post
   end
 
   def show 
-    @posts = Post.where('user_id = ?', current_user)
   end
 
-  def delete 
+  def destroy 
+    Post.find(params[:id]).destroy
+    redirect_to current_user
   end
 
   private 
