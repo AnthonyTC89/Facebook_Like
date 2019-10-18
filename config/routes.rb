@@ -9,9 +9,10 @@ Rails.application.routes.draw do
     post 'signup' => 'devise/registrations#create'
 
     get '/signout', to: 'devise/sessions#destroy', as: :signout
-    
+
     root 'devise/registrations#new'
   end
 
   resources :users,    only: :show
+  resources :posts
 end
