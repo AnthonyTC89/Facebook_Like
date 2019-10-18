@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :posts
+  before_destroy :cleanup
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
 
@@ -36,5 +37,10 @@ class User < ApplicationRecord
       u.name = auth_hash['info']['name']
       u.password = SecureRandom.hex
     end
-   end
+  end
+
+  private
+    def cleanup
+      self.posts.destroy_all
+    end
 end
