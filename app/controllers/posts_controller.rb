@@ -6,9 +6,11 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.valid? 
       @post.save
+      flash[:success] = "Post created"
       redirect_to current_user
     else
-      render current_user
+      flash[:danger] = "Post can't be empty"
+      redirect_to current_user
     end
   end
 
@@ -17,6 +19,7 @@ class PostsController < ApplicationController
 
   def destroy 
     Post.find(params[:id]).destroy
+    flash[:success] = "Post deleted"
     redirect_to current_user
   end
 
