@@ -8,11 +8,10 @@ class PostsController < ApplicationController
     if @post.valid?
       @post.save
       flash[:success] = 'Post created'
-      redirect_to current_user
     else
       flash[:danger] = "Post can't be empty"
-      redirect_to current_user
     end
+    redirect_to current_user
   end
 
   def destroy
