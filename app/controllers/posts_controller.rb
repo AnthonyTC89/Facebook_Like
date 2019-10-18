@@ -14,9 +14,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def show 
-  end
-
   def destroy 
     Post.find(params[:id]).destroy
     flash[:success] = "Post deleted"
