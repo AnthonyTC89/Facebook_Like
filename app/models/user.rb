@@ -45,7 +45,6 @@ class User < ApplicationRecord
   private
 
   def cleanup
-    posts.destroy_all
-    comments.destroy_all
+    posts.destroy_all    
   end
 end
