@@ -3,6 +3,5 @@
 class UsersController < ApplicationController
   def show
     @posts = Post.where('user_id = ?', current_user)
-    @comments = Comment.where('user_id = ?', current_user)
   end
 end
