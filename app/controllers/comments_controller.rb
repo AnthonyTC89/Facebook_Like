@@ -9,7 +9,8 @@ class CommentsController < ApplicationController
       @comment.save
       redirect_to current_user
     else
-      flash.now[:danger] = "error"
+      flash[:danger] = "Comment can't be blank"
+      redirect_to current_user
     end
   end 
 
