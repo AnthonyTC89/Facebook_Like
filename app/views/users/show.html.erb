@@ -11,8 +11,10 @@
   <div>
     <% current_user.posts.each do |post| %>
       <div>
-        <%= post.content %> <%= link_to 'delete', post, method: :delete,
-                                  data: { confirm: "Are you sure?" } %></li>
+        <%= post.content %> 
+        <%= link_to 'delete', post, method: :delete,
+                              data: { confirm: "Are you sure?" } %>
+        <%= my_time(post) %>
       </div>
       <br>
       <div>
