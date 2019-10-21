@@ -31,5 +31,5 @@ class User < ApplicationRecord
       u.name = auth_hash['info']['name']
       u.password = SecureRandom.hex
     end
-   end
+  end
 end
