@@ -5,12 +5,20 @@
 <% end %><br>
 
 <%= render 'posts/shared/post_form' %>
-
+<br>
+<br>
 <% if current_user.posts.any? %>
-  <ul>
+  <div>
     <% current_user.posts.each do |post| %>
-      <li><%= post.content %> <%= link_to 'delete', post, method: :delete,
-          data: { confirm: "Are you sure?" } %></li>
+      <div>
+        <%= post.content %> <%= link_to 'delete', post, method: :delete,
+                                  data: { confirm: "Are you sure?" } %></li>
+      </div>
+      <br>
+      <div>
+        <%= render 'comments/form', :post_id => post.id %><br>
+      </div>
     <% end %>
-  </ul>
+    <br>
+  </div>
 <% end %>

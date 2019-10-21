@@ -1,0 +1,5 @@
+<%= form_for(:comment, :url => { :action => :create, :controller => :comments } ) do |f| %>
+  <%= f.hidden_field :post_id, :value => post_id %>
+  <%= f.text_field :content, class: 'form-control', placeholder: 'Write your comment' %><br>
+  <%= f.submit "Save Comment", class: "btn btn-primary" %>
+<% end %>
