@@ -1,0 +1,11 @@
+<% if @comments %>
+  <ul>
+    <% @comments.each do |comment| %>
+      <% if comment.post_id == post_id %>
+        <li><%= comment.content %></li><br>
+      <% end %>
+    <% end %>
+  </ul>
+<% else %>
+  <h2>no comments</h2>
+<% end %>

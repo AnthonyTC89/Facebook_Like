@@ -16,6 +16,9 @@
       </div>
       <br>
       <div>
+        <%= render 'comments/show', :post_id => post.id %>
+      </div>
+      <div>
         <%= render 'comments/form', :post_id => post.id %><br>
       </div>
     <% end %>
