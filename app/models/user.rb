@@ -2,7 +2,7 @@
 
 class User < ApplicationRecord
   has_many :posts
-  has_many :comments
+  has_many :comments, :through => :posts
   before_destroy :cleanup
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
