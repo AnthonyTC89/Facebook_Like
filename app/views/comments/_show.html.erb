@@ -1,7 +1,11 @@
 <% if post.comments.any? %>
   <ul>
     <% post.comments.each do |comment| %>
-        <li><%= comment.content %></li><br>
+      <li>
+        <%= comment.content %>
+        <%= link_to 'delete comment', comment, method: :delete,
+                                  data: { confirm: "Are you sure?" } %>
+      </li><br>
     <% end %>
   </ul>
 <% end %>
