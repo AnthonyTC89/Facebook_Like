@@ -16,6 +16,9 @@
                               data: { confirm: "Are you sure?" } %>
         <%= my_time(post) %>
       </div>
+      <div>
+        Likes: <%= post.likes.count %>
+      </div>
       <br>
       <div>
         <%= render 'comments/show', :post => post %>

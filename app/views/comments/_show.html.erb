@@ -7,7 +7,11 @@
         <%= my_time(comment) %>
         <%= link_to 'delete comment', comment, method: :delete,
                                   data: { confirm: "Are you sure?" } %>
-      </li><br>
+      </li>
+      <div>
+        Likes: <%= comment.likes.count %>
+      </div>
+      <br>
     <% end %>
   </ul>
 <% end %>
