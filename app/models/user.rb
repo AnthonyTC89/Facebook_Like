@@ -2,6 +2,7 @@
 
 class User < ApplicationRecord
   has_many :posts
+  has_many :comments
   before_destroy :cleanup
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
@@ -45,5 +46,6 @@ class User < ApplicationRecord
 
   def cleanup
     posts.destroy_all
+    comments.destroy_all
   end
 end
