@@ -1,11 +1,7 @@
-<% if @comments %>
+<% if post.comments.any? %>
   <ul>
-    <% @comments.each do |comment| %>
-      <% if comment.post_id == post_id %>
+    <% post.comments.each do |comment| %>
         <li><%= comment.content %></li><br>
-      <% end %>
     <% end %>
   </ul>
-<% else %>
-  <h2>no comments</h2>
 <% end %>
