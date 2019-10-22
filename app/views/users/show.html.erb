@@ -20,8 +20,8 @@
         Likes: <%= post.likes.count %>
         <%= button_to "Like", :controller => "likes", :action => "create",
                               :params => { :post => post } %>
-        <%= button_to "Dislike", :controller => "likes", :action => "destroy",
-                              :params => { :post => post } %>
+        <%= button_to "Dislike", "/likes?id=#{@.id}",:controller => "likes", 
+                              :action => "destroy", :params => { :post => post } %>
       </div>
       <br>
       <div>
