@@ -28,6 +28,9 @@ gem 'omniauth-facebook'
 gem 'omniauth'
 gem 'dotenv-rails'
 
+gem 'bootstrap',  '~>4.3.1'
+gem 'font_awesome5_rails'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
