@@ -18,10 +18,13 @@
       </div>
       <div>
         Likes: <%= post.likes.count %>
-        <%= button_to "Like", :controller => "likes", :action => "create",
-                              :params => { :post => post } %>
-        <%= button_to "Dislike", "/likes?id=#{@.id}",:controller => "likes", 
-                              :action => "destroy", :params => { :post => post } %>
+        <% if @like = current_user_like?(post) %>
+          <%= link_to 'DisLike', @like, method: :delete %>
+        
+        <% else  %>                
+          <%= button_to "Like", :controller => "likes", :action => "create",
+                              :params => { :id => post, :type => "Post" } %>
+        <% end  %> 
       </div>
       <br>
       <div>

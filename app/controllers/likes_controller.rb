@@ -4,17 +4,14 @@ class LikesController < ApplicationController
   end
 
   def create
-    @post = Post.find(params[:post].to_i)
-    @like = @post.likes.build()
-    @like.user = current_user
+    @like = Like.new(user: current_user, likeable_id: params[:id].to_i, 
+      likeable_type: params[:type])
     @like.save
     redirect_to current_user 
   end
 
   def destroy
-    @post = params[:post].to_i
-    @like = Like.where('post_id = ? AND user_id = ?', @post, current_user)
-    p @like 
+    @like = Like.find(params[:id].to_i)
     @like.destroy
     redirect_to current_user
   end

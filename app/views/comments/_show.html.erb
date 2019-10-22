@@ -10,6 +10,13 @@
       </li>
       <div>
         Likes: <%= comment.likes.count %>
+        <% if @like = current_user_like?(comment) %>
+          <%= link_to 'DisLike', @like, method: :delete %>
+        
+        <% else  %>                
+          <%= button_to "Like", :controller => "likes", :action => "create",
+                              :params => { :id => comment, :type => "Comment"  } %>
+        <% end  %> 
       </div>
       <br>
     <% end %>
