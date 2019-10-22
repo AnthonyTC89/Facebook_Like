@@ -12,5 +12,10 @@ class LikesController < ApplicationController
   end
 
   def destroy
+    @post = params[:post].to_i
+    @like = Like.where('post_id = ? AND user_id = ?', @post, current_user)
+    p @like 
+    @like.destroy
+    redirect_to current_user
   end
 end
