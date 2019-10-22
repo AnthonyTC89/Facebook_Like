@@ -11,11 +11,12 @@
       <div>
         Likes: <%= comment.likes.count %>
         <% if @like = current_user_like?(comment) %>
-          <%= button_to "DisLike", @like, :method => :delete %>
+          <%= button_to "DisLike", @like, :method => :delete, :class => 'btn btn-small btn-primary' %>
         
         <% else  %>                
-          <%= button_to "Like", :controller => "likes", :action => "create",
-                              :params => { :id => comment, :type => "Comment" } %>
+          <%= button_to "Like", { :controller => "likes", :action => "create",
+                                :params => { :id => comment, :type => "Comment" } }, 
+                                { :class => 'btn btn-small btn-primary' } %>
         <% end  %> 
       </div>
       <br>

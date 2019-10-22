@@ -7,12 +7,12 @@ class LikesController < ApplicationController
     @like = Like.new(user: current_user, likeable_id: params[:id].to_i, 
       likeable_type: params[:type])
     @like.save
-    render :template => 'users/show'
+    redirect_to current_user
   end
 
   def destroy
     @like = Like.find(params[:id].to_i)
     @like.destroy
-    render :template => 'users/show'
+    redirect_to current_user
   end
 end
