@@ -18,6 +18,8 @@
       </div>
       <div>
         Likes: <%= post.likes.count %>
+        <%= button_to "Like", :controller => "likes", :action => "create",
+                              :params => { :post => post } %>
       </div>
       <br>
       <div>
