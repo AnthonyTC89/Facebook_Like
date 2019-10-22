@@ -19,8 +19,7 @@
       <div>
         Likes: <%= post.likes.count %>
         <% if @like = current_user_like?(post) %>
-          <%= link_to 'DisLike', @like, method: :delete %>
-        
+          <%= button_to "DisLike", @like, :method => :delete %>
         <% else  %>                
           <%= button_to "Like", :controller => "likes", :action => "create",
                               :params => { :id => post, :type => "Post" } %>
