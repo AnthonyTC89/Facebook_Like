@@ -12,6 +12,7 @@
   <body>
     <% if current_user %>
       <div>ID: <%= current_user.id %></div>
+      <%= link_to 'Posts', '/posts' %>
       <%= link_to 'Profile', '/users/show' %>
       <%= link_to 'Edit User', '/users/edit' %>
       <%= link_to 'Logout', '/users/sign_out', method: :delete %>

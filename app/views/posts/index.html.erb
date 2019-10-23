@@ -3,7 +3,7 @@
 <% if @posts.any? %>
   <ul>
     <% @posts.each do |post| %>
-      <li><%= post.user.first_name %> - <%= post.content %>
+      <li>Author: <%= post.user.first_name %> || Post: <%= post.content %></li>
     <% end %>
   </ul>
 <% end %>
