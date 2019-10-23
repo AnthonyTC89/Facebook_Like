@@ -1,4 +1,4 @@
-<h1>Hello <%= current_user.first_name %></h1>
+<h1><%= image_tag current_user.gravatar_url, :class => "gravatar" %> <%= current_user.first_name %></h1>
 
 <% flash.each do |message_type, message| %>
   <div class="alert alert-<%= message_type %>"><%= message %></div>
