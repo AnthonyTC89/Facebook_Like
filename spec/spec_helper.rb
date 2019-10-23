@@ -7,6 +7,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'capybara/rspec'
 
 OmniAuth.config.test_mode = true
 omniauth_hash = { 'provider' => 'github',
