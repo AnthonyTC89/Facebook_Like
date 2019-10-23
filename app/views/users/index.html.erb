@@ -1,0 +1,14 @@
+<h1>User Index</h1>
+
+<% if @users.any? %>
+
+    <% @users.each do |user| %>
+    <div>
+      <%= link_to 'Profile', user %>
+      name: <%= user.first_name %> <%= user.last_name %>
+      email: <%= user.email %>
+    </div>
+    <% end %>
+  <% else %>
+  <p class = "danger"> There are no other users. </p> 
+<% end %>
