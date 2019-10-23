@@ -1,0 +1,13 @@
+<h1>All Users</h1>
+<br/>
+<% if @users.any? %>
+
+    <% @users.each do |user| %>
+    <div>
+      <%= link_to "#{user.first_name} #{user.last_name}", user %>
+      Email: <%= user.email %>
+    </div><br/>
+    <% end %>
+  <% else %>
+  <p class = "danger"> There are no other users. </p> 
+<% end %>
