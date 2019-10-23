@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  
   let(:user) do
     User.create!(first_name: 'Foo', email: 'foo@bar.com',
                  password: '123456', password_confirmation: '123456')
