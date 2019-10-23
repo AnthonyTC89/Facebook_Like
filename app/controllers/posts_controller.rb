@@ -20,6 +20,13 @@ class PostsController < ApplicationController
     redirect_to current_user
   end
 
+  def show
+  end
+
+  def index 
+    @posts = Post.all
+  end
+
   private
 
   def post_params

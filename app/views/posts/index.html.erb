@@ -1,0 +1,9 @@
+<h1>Posts Index</h1>
+
+<% if @posts.any? %>
+  <ul>
+    <% @posts.each do |post| %>
+      <li><%= post.user.first_name %> - <%= post.content %>
+    <% end %>
+  </ul>
+<% end %>
