@@ -2,6 +2,6 @@
 
 class UsersController < ApplicationController
   def show
-    @posts = Post.where('user_id = ?', current_user)
+    @posts = current_user.posts
   end
 end
