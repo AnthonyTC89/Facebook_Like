@@ -20,10 +20,9 @@ class PostsController < ApplicationController
     redirect_to current_user
   end
 
-  def show
-  end
+  def show; end
 
-  def index 
+  def index
     @posts = Post.all - current_user.posts
   end
 
