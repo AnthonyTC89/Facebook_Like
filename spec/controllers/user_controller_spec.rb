@@ -5,19 +5,19 @@ require 'capybara/rails'
 
 RSpec.describe UsersController do
   describe 'routes of Devise gem' do
-    it "will visit root_path" do
+    it 'will visit root_path' do
       visit root_path
-      expect(current_path).to eql "/"
+      expect(current_path).to eql '/'
     end
 
-    it "will visit login_path" do
+    it 'will visit login_path' do
       visit login_path
-      expect(current_path).to eql "/login"
+      expect(current_path).to eql '/login'
     end
-    
-    it "will visit signup_path" do
+
+    it 'will visit signup_path' do
       visit signup_path
-      expect(current_path).to eql "/signup"
+      expect(current_path).to eql '/signup'
     end
 
     # it "will visit root_path logged" do
@@ -30,4 +30,4 @@ RSpec.describe UsersController do
     #   expect(current_path).to eql "/users/show"
     # end
   end
-end 
+end

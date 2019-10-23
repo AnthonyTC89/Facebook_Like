@@ -36,7 +36,7 @@ RSpec.configure do |config|
   # assertions if you prefer.
 
   config.include Capybara::DSL
-  config.include Rails.application.routes.url_helpers 
+  config.include Rails.application.routes.url_helpers
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
