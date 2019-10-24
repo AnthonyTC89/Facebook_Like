@@ -1,0 +1,11 @@
+<div>
+  Likes: <%= post.likes.count %>
+  <% if @like = current_user_like?(post) %>
+    <%= button_to "DisLike", @like, :method => :delete, 
+                  :class => 'btn btn-large btn-primary' %>
+  <% else  %>                
+    <%= button_to "Like", { :controller => "likes", :action => "create",
+                            :params => { :id => post, :type => "Post" } }, 
+                            { :class => 'btn btn-large btn-primary' } %>
+  <% end  %> 
+</div>

@@ -7,36 +7,12 @@
 <% if current_user == @user %>
   <%= render 'posts/shared/post_form' %>
 <% end %>
+
 <br><br>
+
 <% if @user.posts.any? %>
   <div>
-    <% @user.posts.each do |post| %>
-      <div>
-        <%= post.content %> 
-        <%= link_to 'delete', post, method: :delete,
-                              data: { confirm: "Are you sure?" } %>
-        <%= my_time(post) %>
-      </div>
-      <div>
-        Likes: <%= post.likes.count %>
-        <% if @like = current_user_like?(post) %>
-          <%= button_to "DisLike", @like, :method => :delete, 
-                                :class => 'btn btn-large btn-primary' %>
-        <% else  %>                
-          <%= button_to "Like", { :controller => "likes", :action => "create",
-                                :params => { :id => post, :type => "Post" } }, 
-                                { :class => 'btn btn-large btn-primary' } %>
-        <% end  %> 
-      </div>
-      <br>
-      <div>
-        <%= render 'comments/show', :post => post %>
-      </div>
-      <div>
-        <%= render 'comments/form', :post_id => post.id %><br>
-      </div>
-    <% end %>
-    <br>
+    <%= render 'posts/shared/show', :user => @user %>
   </div>
 <% else %>
   <h6>No posts yet</h6>
