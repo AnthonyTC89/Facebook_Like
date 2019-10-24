@@ -9,10 +9,10 @@ class Post < ApplicationRecord
 
   validates :content, presence: true, length: { maximum: 250 }
 
-  private 
+  private
 
   def cleanup
-    self.comments.destroy_all  
-    self.likes.destroy_all  
+    comments.destroy_all
+    likes.destroy_all
   end
 end

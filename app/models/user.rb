@@ -4,7 +4,7 @@ class User < ApplicationRecord
   include Gravtastic
   gravtastic
   has_many :posts
-  has_many :comments, :through => :posts
+  has_many :comments, through: :posts
   before_destroy :cleanup
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
@@ -47,6 +47,6 @@ class User < ApplicationRecord
   private
 
   def cleanup
-    posts.destroy_all    
+    posts.destroy_all
   end
 end
