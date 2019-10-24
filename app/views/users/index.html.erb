@@ -1,7 +1,6 @@
 <h1>All Users</h1>
 <br/>
 <% if @users.any? %>
-
     <% @users.each do |user| %>
     <div>
       <%= image_tag current_user.gravatar_url, :class => "gravatar" %>

@@ -5,15 +5,11 @@
 <% end %><br>
 
 <% if current_user == @user %>
-  <%= render 'posts/shared/post_form' %>
+  <%= render 'posts/shared/form' %>
 <% end %>
-
 <br><br>
-
 <% if @user.posts.any? %>
-  <div>
     <%= render 'posts/shared/show', :user => @user %>
-  </div>
 <% else %>
   <h6>No posts yet</h6>
 <% end %>
