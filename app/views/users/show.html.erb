@@ -1,0 +1,20 @@
+<h1><%= @user.first_name %>'s Profile</h1>
+
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %><br>
+
+<% if current_user == @user %>
+  <%= render 'posts/shared/post_form' %>
+<% end %>
+
+<% if @user.posts.any? %>
+  <ul>
+    <% @user.posts.each do |post| %>
+      <li>Author: <%= post.user.first_name %> || Post: <%= post.content %> <%= link_to 'delete', post, method: :delete,
+          data: { confirm: "Are you sure?" } %></li>
+    <% end %>
+  </ul>
+<% else %>
+  This user has no posts yet.
+<% end %>

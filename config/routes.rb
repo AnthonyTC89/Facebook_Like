@@ -1,8 +1,18 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  # devise_scope :user do
-  #   delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
-  # end
+  devise_scope :user do
+    get  'login', to: 'devise/sessions#new'
+    post 'login', to: 'devise/sessions#create'
+
+    get  'signup' => 'devise/registrations#new'
+    post 'signup' => 'devise/registrations#create'
+
+    get '/signout', to: 'devise/sessions#destroy', as: :signout
+
+    root 'devise/registrations#new'
+  end
+
+  resources :users
+  resources :posts
 end

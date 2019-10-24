@@ -8,12 +8,14 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'b74fa618a245b2befb684f64c9877ea574d46f94a3bd972d404abb353fa99c926d7ca7613debb486745fcaf1cd779543dc5115f564a1a687f6fb5e590502b712'
-
+  # config.secret_key = '0b228a642c477428c6fb1576174943eed61631c79baa173996de82203c31613e54fbad531aea64074a94cf480741faa27f63047fcb04bdd6b96fa434f071f7a5'
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
 
+  # ==> omniauth configuration
+  config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], token_params: { parse: :json }
+      #,{ strategy_class: OmniAuth::Strategies::Facebook, provider_ignores_state: true, } 
   # ==> Mailer Configuration
   # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -115,7 +117,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '00021855f3b7539cc0ddacadfe39b84b593da9218f3537bc7aeb3acb03ce04c2e6e48a04f2ed2ee44fe32d61b6a2b56d4eac8a642675ed7f2ffae88e9ad03689'
+  # config.pepper = '7c9aaaeb294c2d5e5daf59e62b1068a5e4af56a0ef27ba6f963b1a667872a675600b9dbc39209130a791022367db1f072c3010f9b89e4374321527a477cc7a9c'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -233,7 +235,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  # config.scoped_views = false
+  config.scoped_views = true
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
@@ -260,7 +262,6 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], token_params: { parse: :json }
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
   # ==> Warden configuration
