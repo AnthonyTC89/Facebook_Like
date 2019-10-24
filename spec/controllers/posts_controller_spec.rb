@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe PostsController, type: :controller do
+RSpec.describe "PostsController", type: :controller do
   include Devise::Test::IntegrationHelpers
 
   let(:user) { User.create(first_name: "Test", email: 'test@test.com', 
@@ -15,6 +15,7 @@ RSpec.describe PostsController, type: :controller do
       visit 'users/show'
       expect(page).to have_content('Post Content')
       expect(Post.count).to eql(1)
+      sign_out user
     end
 
     it 'tries to create an invalid post' do 
@@ -23,6 +24,7 @@ RSpec.describe PostsController, type: :controller do
       visit 'users/show'
       expect(page).to have_content('No posts yet')
       expect(Post.count).to eql(0)
+      sign_out user
     end
   end
 
@@ -37,6 +39,7 @@ RSpec.describe PostsController, type: :controller do
       expect(Post.count).to eql(0)
       visit '/users/show'
       expect(page).to have_content('No posts yet')
+      sign_out user
     end
   end
 
@@ -52,7 +55,10 @@ RSpec.describe PostsController, type: :controller do
       Post.create(user: user_1, content: 'Content User 1')
       Post.create(user: user_2, content: 'Content User 2')
       visit '/posts'
+      expect(page).to have_content('Content User 1')
+      expect(page).to have_content('Content User 2')
       expect(page).to_not have_content('Post Content')
+      sign_out user
     end
   end
 end

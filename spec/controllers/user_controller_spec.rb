@@ -3,7 +3,7 @@
 require 'rails_helper'
 require 'capybara/rails'
 
-RSpec.describe "Users Controller" do
+RSpec.describe "UsersController", type: :controller do
 
   include Devise::Test::IntegrationHelpers
 
