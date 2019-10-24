@@ -12,7 +12,7 @@ RSpec.describe "PostsController", type: :controller do
     it 'creates a valid post for a logged user' do 
       Post.create(user: user, content: 'Post Content')
       sign_in user
-      visit 'users/show'
+      visit "/users/#{user.id}"
       expect(page).to have_content('Post Content')
       expect(Post.count).to eql(1)
       sign_out user
@@ -21,7 +21,7 @@ RSpec.describe "PostsController", type: :controller do
     it 'tries to create an invalid post' do 
       Post.create(user: user, content: '')
       sign_in user
-      visit 'users/show'
+      visit "/users/#{user.id}"
       expect(page).to have_content('No posts yet')
       expect(Post.count).to eql(0)
       sign_out user
@@ -33,11 +33,11 @@ RSpec.describe "PostsController", type: :controller do
       sign_in user
       Post.create(user: user, content: 'Post Content')
       expect(Post.count).to eql(1)
-      visit '/users/show'
+      visit "/users/#{user.id}"
       expect(page).to have_content('Post Content')
       Post.first.destroy
       expect(Post.count).to eql(0)
-      visit '/users/show'
+      visit "/users/#{user.id}"
       expect(page).to have_content('No posts yet')
       sign_out user
     end

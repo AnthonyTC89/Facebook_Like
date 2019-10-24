@@ -5,7 +5,7 @@ RSpec.describe "Sessions" do
     sign_in user
     visit root_path
     expect(page).to have_content('Test') 
-    expect(current_path).to eql("/users/show") 
+    expect(current_path).to eql("/users/#{user.id}") 
     
     sign_out user
     visit root_path

@@ -2,9 +2,10 @@
   <% @user.posts.each do |post| %>
     <div>
       <%= post.content %> 
+      <%= my_time(post) %>
       <%= link_to 'delete', post, method: :delete,
                             data: { confirm: "Are you sure?" } %>
-      <%= my_time(post) %>
+      
     </div>
     <%= render 'likes/shared/show', :object => post %><br>
     <%= render 'comments/show', :post => post %>

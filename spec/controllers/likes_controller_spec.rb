@@ -16,7 +16,7 @@ RSpec.describe LikesController, type: :controller do
       expect(Like.count).to eql(0)
       post.likes.create(user: user)
       expect(Like.count).to eql(1)
-      visit '/users/show'
+      visit "/users/#{user.id}"
       expect(page).to have_content('Likes: 1')
       sign_out user
     end
@@ -24,13 +24,13 @@ RSpec.describe LikesController, type: :controller do
     it 'Creates a valid like for a comment and a post' do 
       sign_in user
       expect(Like.count).to eql(0)
-      visit '/users/show'
+      visit "/users/#{user.id}"
       expect(page).to have_content('Likes: 0')
       post.likes.create(user: user)
       expect(Like.count).to eql(1)
       comment.likes.create(user: user)
       expect(Like.count).to eql(2)
-      visit '/users/show'
+      visit "/users/#{user.id}"
       expect(page).to have_content('Likes: 1')
       expect(page).to_not have_content('Likes: 0')
       sign_out user
@@ -48,7 +48,7 @@ RSpec.describe LikesController, type: :controller do
       expect(Like.count).to eql(1)
       comment.likes.first.destroy
       expect(Like.count).to eql(0)
-      visit '/users/show'
+      visit "/users/#{user.id}"
       expect(page).to_not have_content('Likes: 1')
       expect(page).to have_content('Likes: 0')
       sign_out user

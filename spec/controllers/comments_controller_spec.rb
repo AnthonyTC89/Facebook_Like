@@ -13,7 +13,7 @@ RSpec.describe CommentsController, type: :controller do
   describe 'Comment create action' do 
     it 'creates a valid post for a logged user' do 
       sign_in user
-      visit 'users/show'
+      visit "users/#{user.id}"
       expect(page).to have_content(comment.content)
       expect(Comment.count).to eql(1)
       sign_out user
