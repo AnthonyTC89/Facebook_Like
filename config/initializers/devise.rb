@@ -9,7 +9,6 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '0b228a642c477428c6fb1576174943eed61631c79baa173996de82203c31613e54fbad531aea64074a94cf480741faa27f63047fcb04bdd6b96fa434f071f7a5'
-
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -17,8 +16,8 @@ Devise.setup do |config|
   # ==> omniauth configuration
   config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], token_params: { parse: :json }
       #,{ strategy_class: OmniAuth::Strategies::Facebook, provider_ignores_state: true, } 
-
   # ==> Mailer Configuration
+  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
