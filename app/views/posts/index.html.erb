@@ -1,9 +1,15 @@
 <h1>Posts Index</h1>
 
 <% if @posts.any? %>
-  <ul>
     <% @posts.each do |post| %>
-      <li>Author: <%= post.user.first_name %> || Post: <%= post.content %></li>
+    <div>
+       Author: <%= link_to "#{post.user.first_name} #{post.user.last_name}", post.user %>
+       || Post: <%= post.content %></li> <%= my_time(post) %>
+    <div>
+    <%= render 'likes/shared/show', :object => post %><br>
+    <%= render 'comments/show', :post => post %>
+    <%= render 'comments/form', :post_id => post.id %><br>
     <% end %>
-  </ul>
 <% end %>
+
+
