@@ -8,6 +8,10 @@ RSpec.describe Post, type: :model do
                  password: '123456', password_confirmation: '123456')
   end
 
+  let!(:post) { Post.create(user: user, content: 'Post Content') }
+
+  let!(:comment) { Comment.create(user: user, post: post, content: "Comment Content") }
+
   describe 'Creating a valid post' do
     it 'Post with valid fields' do
       @post = user.posts.build(content: 'content test')
@@ -27,6 +31,19 @@ RSpec.describe Post, type: :model do
     it 'Post without user' do
       @post = Post.new(content: 'content test')
       expect(@post).to_not be_valid
+    end
+  end
+
+  describe 'destroy associated objects ' do
+    it 'destroy objects associated with posts ' do
+      post.likes.create(user: user)
+      comment.likes.create(user: user)
+      expect(Like.count).to eql(2)
+      expect(Comment.count).to eql(1)
+      post.destroy
+      expect(Post.count).to eql(0)
+      expect(Comment.count).to eql(0)
+      expect(Like.count).to eql(0)
     end
   end
 end
