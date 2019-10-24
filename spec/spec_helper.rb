@@ -35,7 +35,10 @@ RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
-
+  config.include Capybara::DSL
+  config.include Rails.application.routes.url_helpers
+  config.include SpecTestHelper, :type => :controller
+  
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
   config.infer_base_class_for_anonymous_controllers = false

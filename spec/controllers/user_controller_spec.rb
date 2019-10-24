@@ -20,11 +20,14 @@ RSpec.describe UsersController, type: :controller do
       expect(current_path).to eql '/signup'
     end
 
-    it 'after login' do
-      User.create(first_name: 'foobar', email: 'foobar@foobar.com', password: '123456')
-      user = User.first
-      sign_in user
-      expect(current_path).to eql user
-    end
+    # it "signs me in" do
+
+    #   user = User.create(first_name: 'foobar', email: 'foobar@foobar.com', 
+    #     password: '123456', password_confirmation: '123456')
+    #   login(user)
+    #   visit "/users/show"
+    #   expect(page).to have_content 'Success'
+   
+    # end
   end 
 end
