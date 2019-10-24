@@ -10,11 +10,10 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     if @comment.valid?
       @comment.save
-      redirect_to request.referrer
     else
       flash[:danger] = "Comment can't be blank"
-      redirect_to request.referrer
     end
+    redirect_to request.referrer
   end
 
   def edit; end
