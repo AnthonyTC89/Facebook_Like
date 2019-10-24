@@ -22,26 +22,28 @@ RSpec.describe "Users Controller" do
       visit signup_path
       expect(current_path).to eql '/signup'
     end
-
-    # it "signs me in" do
-    #   user = User.create(first_name: 'foobar', email: 'foobar@foobar.com', 
-    #     password: '123456', password_confirmation: '123456')
-    #   login(user)
-    #   visit "/users/show"
-    #   expect(page).to have_content 'Success'
-    # end
   end 
 
-  describe ' User controller' do
-    let(:user) {User.create(first_name: "Test1", email: 'test@test1.com', 
+  describe 'User controller' do
+    let(:user) { User.create(first_name: "Test", email: 'test@test.com', 
        password: "password", password_confirmation: "password") }
 
-    it 'An User can show his posts' do 
-
+    it 'tests User show' do 
       Post.create(user: user, content: 'Post Content')
       sign_in user
       visit root_path
       expect(page).to have_content('Post Content') 
+    end
+
+    it 'tests User index' do 
+      User.create(first_name: "Test-1", email: 'test-1@test.com', 
+                  password: "password", password_confirmation: "password")
+      User.create(first_name: "Test-2", email: 'test-2@test.com', 
+                  password: "password", password_confirmation: "password")
+      sign_in user
+      visit '/users'
+      expect(page).to have_content('Test-1')
+      expect(page).to have_content('Test-2')
     end
   end
 end
