@@ -12,7 +12,7 @@ class Post < ApplicationRecord
   private 
 
   def cleanup
-    comments.destroy_all  
-    likes.destroy_all  
+    self.comments.destroy_all  
+    self.likes.destroy_all  
   end
 end

@@ -9,10 +9,10 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id 
     if @comment.valid?
       @comment.save
-      redirect_to current_user
+      redirect_to request.referrer
     else
       flash[:danger] = "Comment can't be blank"
-      redirect_to current_user
+      redirect_to request.referrer
     end
   end 
 
@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
   def destroy
     Comment.find(params[:id]).destroy
     flash[:success] = 'Comment deleted'
-    redirect_to current_user
+    redirect_to request.referrer
   end
 
   private 

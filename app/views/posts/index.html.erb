@@ -1,5 +1,9 @@
 <h1>Posts Index</h1>
 
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %><br>
+
 <% if @posts.any? %>
     <% @posts.each do |post| %>
     <div>

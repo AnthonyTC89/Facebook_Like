@@ -9,6 +9,6 @@ class Comment < ApplicationRecord
   private 
 
   def cleanup
-    likes.destroy_all  
+    self.likes.destroy_all  
   end
 end
