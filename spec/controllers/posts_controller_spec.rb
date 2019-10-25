@@ -2,14 +2,16 @@
 
 require 'rails_helper'
 
-RSpec.describe "PostsController", type: :controller do
+RSpec.describe 'PostsController', type: :controller do
   include Devise::Test::IntegrationHelpers
 
-  let(:user) { User.create(first_name: "Test", email: 'test@test.com', 
-       password: "password", password_confirmation: "password") }
+  let(:user) do
+    User.create(first_name: 'Test', email: 'test@test.com',
+                password: 'password', password_confirmation: 'password')
+  end
 
-  describe 'Post create' do 
-    it 'creates a valid post for a logged user' do 
+  describe 'Post create' do
+    it 'creates a valid post for a logged user' do
       Post.create(user: user, content: 'Post Content')
       sign_in user
       visit "/users/#{user.id}"
@@ -18,7 +20,7 @@ RSpec.describe "PostsController", type: :controller do
       sign_out user
     end
 
-    it 'tries to create an invalid post' do 
+    it 'tries to create an invalid post' do
       Post.create(user: user, content: '')
       sign_in user
       visit "/users/#{user.id}"
@@ -44,10 +46,14 @@ RSpec.describe "PostsController", type: :controller do
   end
 
   describe 'Posts index' do
-    let(:user_1) { User.create(first_name: "Test-1", email: 'test-1@test.com', 
-                  password: "password", password_confirmation: "password") }
-    let(:user_2) { User.create(first_name: "Test-2", email: 'test-2@test.com', 
-                  password: "password", password_confirmation: "password") }
+    let(:user_1) do
+      User.create(first_name: 'Test-1', email: 'test-1@test.com',
+                  password: 'password', password_confirmation: 'password')
+    end
+    let(:user_2) do
+      User.create(first_name: 'Test-2', email: 'test-2@test.com',
+                  password: 'password', password_confirmation: 'password')
+    end
 
     it 'does not show current user posts' do
       sign_in user

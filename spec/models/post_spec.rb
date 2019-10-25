@@ -10,7 +10,7 @@ RSpec.describe Post, type: :model do
 
   let!(:post) { Post.create(user: user, content: 'Post Content') }
 
-  let!(:comment) { Comment.create(user: user, post: post, content: "Comment Content") }
+  let!(:comment) { Comment.create(user: user, post: post, content: 'Comment Content') }
 
   describe 'Creating a valid post' do
     it 'Post with valid fields' do

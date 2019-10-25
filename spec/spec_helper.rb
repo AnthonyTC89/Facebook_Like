@@ -37,8 +37,8 @@ RSpec.configure do |config|
   # assertions if you prefer.
   config.include Capybara::DSL
   config.include Rails.application.routes.url_helpers
-  config.include SpecTestHelper, :type => :controller
-  
+  config.include SpecTestHelper, type: :controller
+
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
   config.infer_base_class_for_anonymous_controllers = false

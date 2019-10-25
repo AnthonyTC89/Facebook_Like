@@ -1,12 +1,16 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-  let!(:user) { User.create(first_name: "Test", email: 'test@test.com', 
-  password: "password", password_confirmation: "password") }
+  let!(:user) do
+    User.create(first_name: 'Test', email: 'test@test.com',
+                password: 'password', password_confirmation: 'password')
+  end
 
   let!(:post) { Post.create(user: user, content: 'Post Content') }
 
-  let!(:comment) { Comment.create(user: user, post: post, content: "Comment Content") }
+  let!(:comment) { Comment.create(user: user, post: post, content: 'Comment Content') }
 
   describe 'Creates and destroy likes' do
     it 'creates likes' do

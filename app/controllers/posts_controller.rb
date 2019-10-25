@@ -2,7 +2,7 @@
 
 class PostsController < ApplicationController
   before_action :authenticate_user!
- 
+
   def new; end
 
   def create
@@ -26,10 +26,8 @@ class PostsController < ApplicationController
     @posts = Post.all - current_user.posts
   end
 
-  def show
+  def show; end
 
-  end
-  
   private
 
   def post_params
