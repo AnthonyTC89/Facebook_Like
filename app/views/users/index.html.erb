@@ -7,17 +7,20 @@
 <% if @users.any? %>
     <% @users.each do |user| %>
     <div>
-      <%= image_tag current_user.gravatar_url, :class => "gravatar" %>
+      <%= image_tag user.gravatar_url, :class => "gravatar" %>
       <%= link_to "#{user.first_name} #{user.last_name}", user %>
       Email: <%= user.email %>
-      <% if current_user.friend?(user) %>
-        <%= button_to "Cancel Friendship", @like, :method => :delete, 
-                  :class => 'btn btn-large btn-primary' %>
+      <% if @friendship = current_user.friend?(user) %>
+        <%= button_to "Cancel Friendship", { :controller => "friendships", :action => "destroy",
+                              :method => :delete,  
+                              :params => { :user_id => current_user.id, :friend_id => user.id }},
+                              { :class => 'btn btn-primary' } %>
+                             
       <% elsif current_user.pending_friends.include?(user) %>
-        <%= button_to 'Cancel Request', { :controller => "friendships", :action => "destroy",
-                            :params => { :user_id => current_user.id, :friend_id => user.id }
-                            :method => 'delete' },
-                            { :class => 'btn btn-primary'}%>
+      
+        <%= button_to "Cancel Request", @friendship, :method => :delete, 
+                  :class => 'btn btn-large btn-primary' %>
+
       <% elsif current_user.friend_requests.include?(user) %>
         <%= button_to 'Accept Request', { :controller => "friendships", :action => "update",
                             :params => { :user_id => current_user.id, :friend_id => user.id } }, 

@@ -68,7 +68,8 @@ class User < ApplicationRecord
   end
 
   def friend?(user)
-    friends.include?(user)
+    Friendship.where("user_id = ? AND friend_id = ?", 
+        self.id, user.id) if friends.include?(user)
   end
 
   private
