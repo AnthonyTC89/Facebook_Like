@@ -46,4 +46,5 @@ RSpec.describe Post, type: :model do
       expect(Like.count).to eql(0)
     end
   end
+  
 end

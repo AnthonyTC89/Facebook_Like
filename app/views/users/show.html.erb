@@ -9,7 +9,7 @@
 <% end %>
 <br><br>
 <% if @user.posts.any? %>
-    <%= render 'posts/shared/show', :user => @user %>
+   <%= render 'posts/shared/show', :user => @user %>
 <% else %>
   <h6>No posts yet</h6>
 <% end %>

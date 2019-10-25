@@ -67,4 +67,5 @@ ActiveRecord::Schema.define(version: 2019_10_21_203350) do
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"
+
 end
