@@ -50,7 +50,7 @@ class User < ApplicationRecord
     friends_array = []
     friends_array << friendships.map{|friendship| friendship.friend if friendship.confirmed}
     friends_array << inverse_friendships.map{|friendship| friendship.user if friendship.confirmed}
-    friends_array.compact
+    friends_array.flatten.compact
   end
 
   def pending_friends
@@ -68,7 +68,7 @@ class User < ApplicationRecord
   end
 
   def friend?(user)
-    friends.include?(user.id)
+    friends.include?(user)
   end
 
   private
