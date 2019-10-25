@@ -12,11 +12,6 @@
   <body>
     <% if current_user %>
       <%= render 'layouts/nav' %>
-      <%= link_to 'Users', '/users' %>
-      <%= link_to 'Posts', '/posts' %>
-      <%= link_to 'Profile', current_user %>
-      <%= link_to 'Edit User', '/users/edit' %>
-      <%= link_to 'Logout', '/users/sign_out', method: :delete %>
     <% end %>
 
     <div class="container">
