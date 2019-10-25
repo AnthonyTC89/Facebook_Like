@@ -5,12 +5,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <% if current_user %>
+      <%= render 'layouts/nav' %>
       <%= link_to 'Users', '/users' %>
       <%= link_to 'Posts', '/posts' %>
       <%= link_to 'Profile', current_user %>
@@ -18,6 +19,8 @@
       <%= link_to 'Logout', '/users/sign_out', method: :delete %>
     <% end %>
 
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

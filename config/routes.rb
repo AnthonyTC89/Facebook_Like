@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     root 'devise/registrations#new'
   end
 
-  resources :users
+  resources :users,    only: [:show, :index]
   resources :posts
+  resources :comments
+  resources :likes
 end

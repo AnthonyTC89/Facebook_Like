@@ -1,0 +1,15 @@
+<div>
+  <% @user.posts.each do |post| %>
+    <div>
+      <%= post.content %> 
+      <%= my_time(post) %>
+      <%= link_to 'delete', post, method: :delete,
+                            data: { confirm: "Are you sure?" } %>
+      
+    </div>
+    <%= render 'likes/shared/show', :object => post %><br>
+    <%= render 'comments/show', :post => post %>
+    <%= render 'comments/form', :post_id => post.id %><br>
+  <% end %>
+  <br>
+</div>

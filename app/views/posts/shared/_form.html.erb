@@ -1,0 +1,8 @@
+<div>
+  <%= form_for(:post, :url => { :action => :create, :controller => :posts } ) do |f| %>
+    <%= f.label :new_post %><br><br>
+    <%= f.text_area :content, class: 'form-control' %><br>
+
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
+</div>

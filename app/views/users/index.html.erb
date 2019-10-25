@@ -1,9 +1,9 @@
 <h1>All Users</h1>
 <br/>
 <% if @users.any? %>
-
     <% @users.each do |user| %>
     <div>
+      <%= image_tag current_user.gravatar_url, :class => "gravatar" %>
       <%= link_to "#{user.first_name} #{user.last_name}", user %>
       Email: <%= user.email %>
     </div><br/>

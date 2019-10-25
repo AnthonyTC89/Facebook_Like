@@ -7,6 +7,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'capybara/rspec'
 
 OmniAuth.config.test_mode = true
 omniauth_hash = { 'provider' => 'github',
@@ -34,6 +35,9 @@ RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
+  config.include Capybara::DSL
+  config.include Rails.application.routes.url_helpers
+  config.include SpecTestHelper, type: :controller
 
   config.include Capybara::DSL
   config.include Rails.application.routes.url_helpers
