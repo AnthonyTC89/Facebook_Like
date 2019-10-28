@@ -10,7 +10,7 @@
       <%= image_tag user.gravatar_url, :class => "gravatar" %>
       <%= link_to "#{user.first_name} #{user.last_name}", user %>
       Email: <%= user.email %>
-      <% if @friendship = current_user.friend?(user) %>
+      <% if current_user.friend?(user) %>
         <%= button_to "Cancel Friendship", { :controller => "friendships", :action => "destroy",
                               :method => :delete,  
                               :params => { :user_id => current_user.id, :friend_id => user.id }},
@@ -18,7 +18,7 @@
                              
       <% elsif current_user.pending_friends.include?(user) %>
       
-        <%= button_to "Cancel Request", @friendship, :method => :delete, 
+        <%= button_to "Cancel Request", find_friendship(current_user, user), :method => :delete, 
                   :class => 'btn btn-large btn-primary' %>
 
       <% elsif current_user.friend_requests.include?(user) %>
