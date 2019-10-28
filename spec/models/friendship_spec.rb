@@ -54,13 +54,12 @@ RSpec.describe Friendship, type: :model do
 
       expect(user2.friend?(user)).to be false
       expect(user.friend?(user2)).to be false
-    end 
+    end
 
     it 'trying to create a friendship with the same user' do
       expect(Friendship.count).to eql(0)
       Friendship.create(user: user, friend: user)
       expect(Friendship.count).to eql(0)
     end
-
   end
 end
