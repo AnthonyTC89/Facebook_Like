@@ -15,13 +15,15 @@
                                              :id => (find_friendship(current_user, user) || 
                                                      find_friendship(user, current_user)) }, 
                                              :method => :delete,
-                                             :class => 'btn btn-primary mt-1' %>
+                                             :class => 'btn btn-primary mt-1',
+                                              data: { confirm: "Are you sure?" } %>
                              
       <% elsif current_user.pending_friends.include?(user) %>
         <%= button_to "Cancel Request", { :controller => :friendships, :action => 'destroy',
                                           :id => find_friendship(current_user, user) }, 
                                           :method => :delete,
-                                          :class => 'btn btn-primary mt-1' %>
+                                          :class => 'btn btn-primary mt-1',
+                                           data: { confirm: "Are you sure?" } %>
 
       <% elsif current_user.friend_requests.include?(user) %>
         <%= button_to 'Accept Request', { :controller => :friendships, :action => 'update',
