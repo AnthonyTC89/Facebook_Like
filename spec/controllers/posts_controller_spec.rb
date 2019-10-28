@@ -69,7 +69,7 @@ RSpec.describe 'PostsController', type: :controller do
       friend.confirm_friend(user)
       visit '/posts'
       expect(page).to have_content('Friend Post')
-      
+
       sign_out user
     end
   end
