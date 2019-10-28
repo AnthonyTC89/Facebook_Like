@@ -45,7 +45,7 @@ RSpec.describe Friendship, type: :model do
       expect(user2.friend?(user)).to be true
       expect(user.friend?(user2)).to be true
 
-      friendship = Friendship.where("user_id = ? and friend_id = ?", user.id, user2.id).first
+      friendship = Friendship.where('user_id = ? and friend_id = ?', user.id, user2.id).first
       friendship.destroy
       expect(Friendship.count).to eql(0)
 
