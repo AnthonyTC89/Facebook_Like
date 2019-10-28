@@ -12,16 +12,15 @@ class FriendshipsController < ApplicationController
   end
 
   def update
+    Friendship.find(params[:id].to_i).update_column(:confirmed, true)
+    flash[:success] = 'Friendship accepted'
+    redirect_to request.referrer
   end
 
   def destroy
-    p "XXXXXXXXXXXXXX qqqqq"
-    @friendship = Like.find(params[:id].to_i)
-    # @user = params[:user_id]
-    # @friend = params[:friend_id]
-
-    # @friendship = Friendship.where("user_id = ? AND friend_id = ?", @user, @friend)
+    @friendship = Friendship.find(params[:id].to_i)
     @friendship.destroy
+    flash[:success] = 'Friendship destroyed'
     redirect_to request.referrer
   end
 end

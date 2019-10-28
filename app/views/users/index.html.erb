@@ -11,20 +11,24 @@
       <%= link_to "#{user.first_name} #{user.last_name}", user %>
       Email: <%= user.email %>
       <% if current_user.friend?(user) %>
-        <%= button_to "Cancel Friendship", { :controller => "friendships", :action => "destroy",
-                              :method => :delete,  
-                              :params => { :user_id => current_user.id, :friend_id => user.id }},
-                              { :class => 'btn btn-primary' } %>
+        <%= button_to "Cancel Friendship", { :controller => :friendships, :action => 'destroy',
+                                             :id => (find_friendship(current_user, user) || 
+                                                     find_friendship(user, current_user)) }, 
+                                             :method => :delete,
+                                             :class => 'btn btn-primary' %>
                              
       <% elsif current_user.pending_friends.include?(user) %>
       
-        <%= button_to "Cancel Request", find_friendship(current_user, user), :method => :delete, 
-                  :class => 'btn btn-large btn-primary' %>
+        <%= button_to "Cancel Request", { :controller => :friendships, :action => 'destroy',
+                                          :id => find_friendship(current_user, user) }, 
+                                          :method => :delete,
+                                          :class => 'btn btn-primary' %>
 
       <% elsif current_user.friend_requests.include?(user) %>
-        <%= button_to 'Accept Request', { :controller => "friendships", :action => "update",
-                            :params => { :user_id => current_user.id, :friend_id => user.id } }, 
-                            { :class => 'btn btn-primary' }%>
+        <%= button_to 'Accept Request', { :controller => :friendships, :action => 'update',
+                                          :id => find_friendship(user, current_user) }, 
+                                          :method => :patch,
+                                          :class => 'btn btn-primary' %>
       <% else %>
         <%= button_to 'Friend Request', { :controller => "friendships", :action => "create",
                             :params => { :user_id => current_user.id, :friend_id => user.id } }, 
