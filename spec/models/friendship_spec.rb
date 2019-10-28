@@ -14,7 +14,7 @@ RSpec.describe Friendship, type: :model do
   end
 
   describe 'Creates and destroys friendships' do
-    it 'creates a friendship' do
+    it 'creates and confirm friendship' do
       Friendship.create(user: user, friend: user_2)
       expect(Friendship.count).to eql(1)
       expect(user.friend?(user_2)).to be_falsey
