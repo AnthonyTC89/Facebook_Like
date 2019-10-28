@@ -8,7 +8,7 @@ class User < ApplicationRecord
   before_destroy :cleanup
 
   has_many :friendships
-  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
 
@@ -48,17 +48,17 @@ class User < ApplicationRecord
 
   def friends
     friends_array = []
-    friends_array << friendships.map{|friendship| friendship.friend if friendship.confirmed}
-    friends_array << inverse_friendships.map{|friendship| friendship.user if friendship.confirmed}
+    friends_array << friendships.map { |friendship| friendship.friend if friendship.confirmed }
+    friends_array << inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
     friends_array.flatten.compact
   end
 
   def pending_friends
-    friendships.map{|friendship| friendship.friend if !friendship.confirmed}.compact
+    friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
   end
 
   def friend_requests
-    inverse_friendships.map{|friendship| friendship.user if !friendship.confirmed}.compact
+    inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
   end
 
   def confirm_friend(user)
