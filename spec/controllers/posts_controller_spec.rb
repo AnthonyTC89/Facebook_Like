@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'PostsController', type: :controller do
   include Devise::Test::IntegrationHelpers
 
-  let(:user) do
+  let!(:user) do
     User.create(first_name: 'Test', email: 'test@test.com',
                 password: 'password', password_confirmation: 'password')
   end
@@ -46,24 +46,30 @@ RSpec.describe 'PostsController', type: :controller do
   end
 
   describe 'Posts index' do
-    let(:user_1) do
+    let!(:friend) do
       User.create(first_name: 'Test-1', email: 'test-1@test.com',
                   password: 'password', password_confirmation: 'password')
     end
-    let(:user_2) do
-      User.create(first_name: 'Test-2', email: 'test-2@test.com',
-                  password: 'password', password_confirmation: 'password')
-    end
 
-    it 'does not show current user posts' do
+    it 'showing a post from an user and other post from a friend' do
       sign_in user
+
       Post.create(user: user, content: 'Post Content')
-      Post.create(user: user_1, content: 'Content User 1')
-      Post.create(user: user_2, content: 'Content User 2')
       visit '/posts'
-      expect(page).to have_content('Content User 1')
-      expect(page).to have_content('Content User 2')
-      expect(page).to_not have_content('Post Content')
+      expect(page).to have_content('Post Content')
+
+      Post.create(user: friend, content: 'Friend Post')
+      visit '/posts'
+      expect(page).to_not have_content('Friend Post')
+
+      Friendship.create(user: user, friend: friend)
+      visit '/posts'
+      expect(page).to_not have_content('Friend Post')
+
+      friend.confirm_friend(user)
+      visit '/posts'
+      expect(page).to have_content('Friend Post')
+      
       sign_out user
     end
   end
