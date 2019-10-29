@@ -1,11 +1,40 @@
 <h1>All Users</h1>
 <br/>
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %><br>
+
 <% if @users.any? %>
     <% @users.each do |user| %>
     <div>
-      <%= image_tag current_user.gravatar_url, :class => "gravatar" %>
+      <%= image_tag user.gravatar_url, :class => "gravatar" %>
       <%= link_to "#{user.first_name} #{user.last_name}", user %>
       Email: <%= user.email %>
+      <% if current_user.friend?(user) %>
+        <%= button_to "Cancel Friendship", { :controller => :friendships, :action => 'destroy',
+                                             :id => (find_friendship(current_user, user) || 
+                                                     find_friendship(user, current_user)) }, 
+                                             :method => :delete,
+                                             :class => 'btn btn-primary mt-1',
+                                              data: { confirm: "Are you sure?" } %>
+                             
+      <% elsif current_user.pending_friends.include?(user) %>
+        <%= button_to "Cancel Request", { :controller => :friendships, :action => 'destroy',
+                                          :id => find_friendship(current_user, user) }, 
+                                          :method => :delete,
+                                          :class => 'btn btn-primary mt-1',
+                                           data: { confirm: "Are you sure?" } %>
+
+      <% elsif current_user.friend_requests.include?(user) %>
+        <%= button_to 'Accept Request', { :controller => :friendships, :action => 'update',
+                                          :id => find_friendship(user, current_user) }, 
+                                          :method => :patch,
+                                          :class => 'btn btn-primary mt-1' %>
+      <% else %>
+        <%= button_to 'Friend Request', { :controller => "friendships", :action => "create",
+                            :params => { :user_id => current_user.id, :friend_id => user.id } }, 
+                            { :class => 'btn btn-primary mt-1' }%>
+      <% end %>
     </div><br/>
     <% end %>
   <% else %>

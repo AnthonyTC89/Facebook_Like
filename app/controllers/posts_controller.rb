@@ -22,7 +22,8 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all - current_user.posts
+    ids = current_user.friends.pluck(:id) << current_user.id
+    @posts = Post.where(user_id: ids)
   end
 
   def show; end

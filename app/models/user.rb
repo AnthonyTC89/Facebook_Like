@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :comments, through: :posts
   before_destroy :cleanup
 
+  has_many :friendships
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
 
   validates :first_name, presence: true, length: { maximum: 50 }
@@ -41,6 +44,31 @@ class User < ApplicationRecord
       u.name = auth_hash['info']['name']
       u.password = SecureRandom.hex
     end
+  end
+
+  def friends
+    friends_array = []
+    friends_array << friendships.map { |friendship| friendship.friend if friendship.confirmed }
+    friends_array << inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
+    friends_array.flatten.compact
+  end
+
+  def pending_friends
+    friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
+  end
+
+  def friend_requests
+    inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
+  end
+
+  def confirm_friend(user)
+    friendship = inverse_friendships.find { |f| f.user == user }
+    friendship.confirmed = true
+    friendship.save
+  end
+
+  def friend?(user)
+    friends.include?(user)
   end
 
   private

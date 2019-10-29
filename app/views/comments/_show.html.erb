@@ -3,8 +3,9 @@
     <ul>
       <% post.comments.each do |comment| %>
         <li>
-          <%= comment.user.first_name %>:
-          <%= comment.content %>
+          <%= image_tag comment.user.gravatar_url, :class => "gravatar" %>
+          <%= link_to "#{comment.user.first_name} #{comment.user.last_name}", comment.user %><br>
+          <b><%= comment.content %></b><br>
           <%= my_time(comment) %>
           <%= link_to 'delete comment', comment, method: :delete,
                                     data: { confirm: "Are you sure?" } %>
