@@ -2,6 +2,8 @@
 
 Created by Microverse students [Anthony Tapia](https://github.com/AnthonyTC89) and [Matheus Silva](https://github.com/matheus-fls) as part of the Ruby on Rails Curriculum.
 
+LIVE VERSION NOW AVAILABLE ON => https://nameless-headland-00406.herokuapp.com/
+
 About => This is the final project about Ruby on Rails. It covers more advanced concepts of Rails like APIs. 
 
 [here](https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project).
