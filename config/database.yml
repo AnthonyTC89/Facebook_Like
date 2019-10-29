@@ -83,3 +83,6 @@ test:
 #
 production:
   <<: *default
+  database: facebook
+  username: rails
+  password: <%= ENV['DB_PASSWORD'] %>
