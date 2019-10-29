@@ -1,5 +1,7 @@
 # README
 
+=> IMPORTANT! We had a problem with this milestone, it was merged together with friendships-v2 for some reason. So I'm opening another pull request because we need the review to finish the project. Thanks for your consideration!
+
 Created by Microverse students [Anthony Tapia](https://github.com/AnthonyTC89) and [Matheus Silva](https://github.com/matheus-fls) as part of the Ruby on Rails Curriculum.
 
 About => This is the final project about Ruby on Rails. It covers more advanced concepts of Rails like APIs. 
