@@ -7,15 +7,17 @@
 <%= render 'posts/shared/form' %><br>
 
 <% if @posts.any? %>
-    <% @posts.each do |post| %>
-      <div class="border-top border-bottom p-2">
-        <%= image_tag post.user.gravatar_url, :class => "gravatar" %>
-        <%= link_to "#{post.user.first_name} #{post.user.last_name}", post.user %><br>
-        <h4 class="m-2 font-weight-bold pt-4 pb-4"><%= post.content %></h4>
-        <%= my_time(post) %>
-        <%= render 'likes/shared/show', :object => post %><br>
-        <%= render 'comments/show', :post => post %>
-        <div class="container"><%= render 'comments/form', :post_id => post.id %><br></div>
-      </div>
-    <% end %>
+  <% @posts.each do |post| %>
+    <div class="border-top border-bottom p-2">
+      <%= image_tag post.user.gravatar_url, :class => "gravatar" %>
+      <%= link_to "#{post.user.first_name} #{post.user.last_name}", post.user %><br>
+      <h4 class="m-2 font-weight-bold pt-4 pb-4"><%= post.content %></h4>
+      <%= my_time(post) %>
+      <%= render 'likes/shared/show', :object => post %><br>
+      <%= render 'comments/show', :post => post %>
+      <div class="container"><%= render 'comments/form', :post_id => post.id %><br></div>
+    </div>
+  <% end %>
+<% else %>
+  <h2>No posts yet! Go make some <%= link_to 'friends', '/users', :class => "nav-link" %></h2>
 <% end %>
