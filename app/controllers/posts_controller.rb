@@ -12,13 +12,13 @@ class PostsController < ApplicationController
     else
       flash[:danger] = "Post can't be empty"
     end
-    redirect_to current_user
+    redirect_to request.referrer
   end
 
   def destroy
     Post.find(params[:id]).destroy
     flash[:success] = 'Post deleted'
-    redirect_to current_user
+    redirect_to request.referrer
   end
 
   def index
