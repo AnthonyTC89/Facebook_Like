@@ -3,7 +3,7 @@
     <div class="border-top border-bottom p-2">
       <%= image_tag post.user.gravatar_url, :class => "gravatar" %>
       <%= link_to "#{post.user.first_name} #{post.user.last_name}", post.user %><br>
-      <h3 class="m-2 font-weight-bold"><%= post.content %></h4>
+      <h4 class="m-2 font-weight-bold pt-4 pb-4"><%= post.content %></h4>
       <%= my_time(post) %>
       <%= link_to 'delete', post, method: :delete,
                             data: { confirm: "Are you sure?" } %>
