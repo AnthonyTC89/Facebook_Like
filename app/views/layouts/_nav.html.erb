@@ -1,0 +1,21 @@
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <div class="container">
+    <ul class="nav">
+      <li class="nav-item">
+        <%= link_to 'Users', '/users', :class => "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Posts', '/posts', :class => "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Profile', current_user, :class => "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Edit User', '/users/edit', :class => "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Logout', '/users/sign_out', method: :delete, :class => "nav-link" %>
+      </li>
+    </ul>
+  </div>
+</nav>

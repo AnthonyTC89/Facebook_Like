@@ -1,0 +1,11 @@
+<div>
+  Likes: <%= object.likes.size %>
+  <% if @like = current_user_like?(object) %>
+    <%= button_to "DisLike", @like, :method => :delete, 
+                  :class => 'btn btn-large btn-primary' %>
+  <% else  %>                
+    <%= button_to "Like", { :controller => "likes", :action => "create",
+                            :params => { :id => object, :type => object.class } }, 
+                            { :class => 'btn btn-large btn-primary' } %>
+  <% end  %> 
+</div>

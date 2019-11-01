@@ -1,0 +1,15 @@
+<h1><%= image_tag @user.gravatar_url, :class => "gravatar" %> <%= @user.first_name %></h1>
+
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %><br>
+
+<% if current_user == @user %>
+  <%= render 'posts/shared/form' %>
+<% end %>
+<br><br>
+<% if @user.posts.any? %>
+   <%= render 'posts/shared/show', :user => @user %>
+<% else %>
+  <h6>No posts yet</h6>
+<% end %>
