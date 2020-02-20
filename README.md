@@ -5,7 +5,7 @@
     Project Create with Ruby on Rails
     <br>
     <br>
-    <a href="https://facebook-like-clone.herokuapp.com//" target="_blank">Live Demo</a>
+    <a href="https://facebook-like-clone.herokuapp.com" target="_blank">Live Demo</a>
     .
     <a href="https://github.com/AnthonyTC89/Facebook_Like/issues">Report Bug</a>
     ·
@@ -36,7 +36,7 @@ This project is part of the course [The Odin Project](https://www.theodinproject
 
 ### Installation
   1. clone the repository [Facebook_Like](https://github.com/AnthonyTC89/Facebook_Like)
-    * Run `sudo apt-get install libpq-dev` [optional] (You need to have installed the postgreSQL dev package with header of PostgreSQL)
+  2. Run `sudo apt-get install libpq-dev` [optional] (You need to have installed the postgreSQL dev package with header of PostgreSQL)
   2. cd in the app folder and run `bundle install`
   3. run `yarn install --check-files` if it's necessary
   4. run `rails db:create && rails db:migrate`
