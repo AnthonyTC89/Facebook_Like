@@ -27,7 +27,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This project is part of the course [The Odin Project](https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project). The goal of the project is learn is aply all the knowleage about Ruby on Rails building a Social Network with interactions between user, posts, comments and likes. 
+This project is part of the course [The Odin Project](https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project). The goal of the project is learn is apply our knowledge of Ruby on Rails to build a Social Network that allows interactions between users, including the ability to create and send posts, comments and likes. 
 
 ### Built With
 * [Ruby](https://www.ruby-lang.org/en/)
