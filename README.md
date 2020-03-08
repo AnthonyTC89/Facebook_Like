@@ -22,6 +22,7 @@
 * [About the Project](#about-the-project)
 * [Built With](#built-with)
 * [Installation](#installation)
+* [Testing](#testing)
 * [Contact](#Contact)
 
 <!-- ABOUT THE PROJECT -->
@@ -58,6 +59,10 @@ This project is part of the course [The Odin Project](https://www.theodinproject
   4. Run: `CREATE USER rails with encrypted password 'rails';` (with semicolon)
   5. Run: `ALTER USER rails createdb;`
 
+### Testing
+
+  1. In the root folder run: `rspec`
+   
 ### Contact
 
 * **[Anthony Tapia Cossio](https://github.com/AnthonyTC89) - [Linkedin](linkedin.com/in/anthony-tapia-cossio) - [Twitter](https://twitter.com/ptonypTC) - [Portfolio](https://portfolio-anthony.herokuapp.com/)**
