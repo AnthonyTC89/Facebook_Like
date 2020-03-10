@@ -23,6 +23,7 @@
 * [Built With](#built-with)
 * [Installation](#installation)
 * [Testing](#testing)
+* [Future Features](#Future-Features)
 * [Contact](#Contact)
 
 <!-- ABOUT THE PROJECT -->
@@ -67,7 +68,14 @@ This project is part of the course [The Odin Project](https://www.theodinproject
 ### Testing
 
   1. In the root folder run: `rspec`
-   
+  
+### Future Features 
+
+  1. Use AWS Store to include Images in posts.
+  2. Create a link to recover the password account.
+  2. Generate a link to confirm the account.
+  3. Improve styling. 
+
 ### Contact
 
 * **[Anthony Tapia Cossio](https://github.com/AnthonyTC89) - [Linkedin](linkedin.com/in/anthony-tapia-cossio) - [Twitter](https://twitter.com/ptonypTC) - [Portfolio](https://portfolio-anthony.herokuapp.com/)**
